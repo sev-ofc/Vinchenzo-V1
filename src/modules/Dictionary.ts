@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+// This is essentially an autoresponder to certain terms for a server for my friends lmfao
+
 let AmongusCock;
 try {  
     var data = fs.readFileSync('AmongusCock.txt', 'utf8');
