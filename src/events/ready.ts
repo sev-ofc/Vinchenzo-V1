@@ -27,6 +27,7 @@ bot.on('ready', async() => {
 			(<Discord.TextChannel> channel).stopTyping();
 		}
 	})
-
-
+	bot.voice.connections.forEach(voiceConnection => {
+		voiceConnection.disconnect();
+	});
 })

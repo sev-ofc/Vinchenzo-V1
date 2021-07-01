@@ -1,6 +1,6 @@
 //Import core Node modules and dependencies
 import * as Discord from 'discord.js';
-import player from 'discord-player';
+import { Player } from "discord-player";
 import fs from 'fs';
 import dotEnv from 'dotenv';
 
@@ -29,5 +29,6 @@ bot.on('shardResume', async function(replayed){
 let EventHandler: eventHandler = new eventHandler(bot);
 let CMDHandler: CommandHandler = new CommandHandler(bot);
 export let CMDManager: CommandManager = new CommandManager();
+export let MusicPlayer = new Player(bot);
 
 bot.login(process.env.BOT_TOKEN)
