@@ -16,4 +16,4 @@ dictionary.set(['i know','why',  'wow', 'ok', 'mean', 'stop', 'wow dude', 'dude'
 let dmDictionary = new Map;
 dmDictionary.set(['bro', 'brutha', 'bruh'], "https://steamcommunity.com/sharedfiles/filedetails/?id=1731654961");
 
-export {dictionary, dmDictionary};
+export {dictionary, dmDictionary, AmongusCock};

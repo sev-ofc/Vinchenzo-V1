@@ -4,7 +4,7 @@ import {bot} from '../index';
 export let commandProps = {
 	'name': 'ping',
 	'usage': '[prefix]ping',
-	'aliases': ['uptime', 'debugping']
+	'aliases': ['debugping']
 }
 
 export async function cmd(message: Message, args: string[]){

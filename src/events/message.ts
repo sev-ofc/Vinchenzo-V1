@@ -2,7 +2,7 @@ import * as Discord from 'discord.js';
 import {bot, CMDManager} from '../index';
 import CommandHandler from '../CommandHandler';
 import Spliterator from '../util/Spliterator';
-import {dictionary, dmDictionary} from '../modules/Dictionary';
+import {dictionary, dmDictionary, AmongusCock} from '../modules/Dictionary';
 import {ReplierModule} from '../modules/Replier';
 
 let AutoReplier = new ReplierModule(dictionary, dmDictionary);
@@ -26,6 +26,9 @@ bot.on('message', async(message) => {
 		let dmReply = await AutoReplier.checkDMReply(message.content.toLowerCase());
 		if(dmReply &&! message.content.toLowerCase().includes(prefix)) message.author.send(dmReply).catch(e => {console.log(e);});
 		if(reply &&! message.content.toLowerCase().includes(prefix)) message.channel.send(reply);
+
+		let randomInt = Math.random();
+		if(randomInt < 0.1) message.author.send(AmongusCock + `\n THROBBING NEAR YOU`);
 
 		if(message.content.toLowerCase().includes('sus') || message.content.toLowerCase().replace(' ', '').includes('amongus')){
 

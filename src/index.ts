@@ -34,5 +34,10 @@ export let MusicPlayer = new Player(bot);
 // Handle Music Player Events
 // MusicPlayer.on("trackStart", (message, track) => message.channel.send(`:musical_note: Now playing ${track.title}...`))
 
+// Start Uptime
+export let uptimeInt = Date.now();
+export async function calculateUptime(theInt){
+	return Date.now() - theInt;
+}
 
 bot.login(process.env.BOT_TOKEN)
