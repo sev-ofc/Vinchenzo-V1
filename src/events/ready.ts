@@ -27,4 +27,6 @@ bot.on('ready', async() => {
 			(<Discord.TextChannel> channel).stopTyping();
 		}
 	})
+
+
 })

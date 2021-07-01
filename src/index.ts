@@ -6,6 +6,8 @@ import dotEnv from 'dotenv';
 
 // Import first-party dependencies and etc
 import {eventHandler} from './EventHandler';
+import CommandHandler from './CommandHandler';
+import {CommandManager} from './CommandManager';
 
 //Get the environment variables
 dotEnv.config({path: "secret.env"});
@@ -25,7 +27,7 @@ bot.on('shardResume', async function(replayed){
 
 // Start the Event Handler
 let EventHandler: eventHandler = new eventHandler(bot);
-
-
+let CMDHandler: CommandHandler = new CommandHandler(bot);
+export let CMDManager: CommandManager = new CommandManager();
 
 bot.login(process.env.BOT_TOKEN)
