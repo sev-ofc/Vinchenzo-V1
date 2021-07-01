@@ -1,0 +1,1 @@
+call npm run-script run-dev
