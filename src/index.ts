@@ -16,19 +16,23 @@ export const bot: Discord.Client = new Discord.Client()
 
 // Monitor discord WS events
 bot.on("error", async function(error){
-	return console.log(`[WS ERROR] ${bot.user.username} has encountered a websocket error! The error is: ${error.name} (Stack: ${error.stack})`);
+	return console.log(`[WS ERROR] ${bot.user.tag} has encountered a websocket error! The error is: ${error.name} (Stack: ${error.stack})`);
 });
 bot.on('shardReconnecting', async function(){
-	return console.log(`[WS RECONNECTING] ${bot.user.username} is attempting to reconnect to discord!`);
+	return console.log(`[WS RECONNECTING] ${bot.user.tag} is attempting to reconnect to discord!`);
 });
 bot.on('shardResume', async function(replayed){
-	return console.log(`[WS RECONNECTED] ${bot.user.username} has reconnected! Replays: ${replayed}`);
+	return console.log(`[WS RECONNECTED] ${bot.user.tag} has reconnected! Replays: ${replayed}`);
 });
 
-// Start the Event Handler
+// Start the Handlers
 let EventHandler: eventHandler = new eventHandler(bot);
 let CMDHandler: CommandHandler = new CommandHandler(bot);
 export let CMDManager: CommandManager = new CommandManager();
 export let MusicPlayer = new Player(bot);
+
+// Handle Music Player Events
+// MusicPlayer.on("trackStart", (message, track) => message.channel.send(`:musical_note: Now playing ${track.title}...`))
+
 
 bot.login(process.env.BOT_TOKEN)

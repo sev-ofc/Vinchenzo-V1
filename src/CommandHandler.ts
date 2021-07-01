@@ -18,7 +18,7 @@ export default class CommandHandler {
 		let fileRegexTS = new RegExp(/\/{0}([A-z-/\d]){1,100}([^A-z.ts]){1}/g); // converts the whole url path to just fileName
 		let fileRegexJS = new RegExp(/\/{0}([A-z-/\d]){1,100}([^A-z.js]){1}/g); // converts the whole url path to just fileName
 		let i = 0
-		console.log(`[COMMANDS] Loading ${files.length - 1} Commands...`)
+		console.log(`[COMMANDS] Loading ${files.length} Commands...`)
 		files.forEach(async f => {
 			let formattedEvent:string = f.replace(fileRegexTS, '').replace(fileRegexJS, '');
 			if(f.includes(`CommandLoader`)) return; // Dont load the event loaded lmao

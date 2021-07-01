@@ -16,7 +16,7 @@ export class eventHandler {
 		let fileRegexTS = new RegExp(/\/{0}([A-z-/\d]){1,100}([^A-z.ts]){1}/g); // converts the whole url path to just fileName
 		let fileRegexJS = new RegExp(/\/{0}([A-z-/\d]){1,100}([^A-z.js]){1}/g); // converts the whole url path to just fileName
 		let i = 0
-		console.log(`[EVENTS] Loading ${files.length - 1} Events...`)
+		console.log(`[EVENTS] Loading ${files.length} Events...`)
 		files.forEach(async f => {
 			let formattedEvent:string = f.replace(fileRegexTS, '').replace(fileRegexJS, '');
 			if(f.includes(`EventLoader`)) return; // Dont load the event loaded lmao

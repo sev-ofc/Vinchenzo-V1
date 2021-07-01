@@ -10,7 +10,5 @@ export let commandProps = {
 
 export async function cmd(message: Message, args: string[]){
 	if(!message.member.voice.channel) return message.reply(`:x: You must be in a voice channel to do this command!`);
-	if(!args.join(" ")) return message.reply(`:x: Invalid track name!`)
-	await MusicPlayer.play(message, args.join(" "), true);
-	
+	await MusicPlayer.skip(message);
 }

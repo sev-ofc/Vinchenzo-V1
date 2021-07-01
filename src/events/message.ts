@@ -2,6 +2,10 @@ import * as Discord from 'discord.js';
 import {bot, CMDManager} from '../index';
 import CommandHandler from '../CommandHandler';
 import Spliterator from '../util/Spliterator';
+import {dictionary, dmDictionary} from '../modules/Dictionary';
+import {ReplierModule} from '../modules/Replier';
+
+let AutoReplier = new ReplierModule(dictionary, dmDictionary);
 
 bot.on('message', async(message) => {
 	if (!message.guild) return;
@@ -14,6 +18,28 @@ bot.on('message', async(message) => {
 	let args: string[] = [];
 
 	let LowerCaseMessage = message.content.toLowerCase()
+
+
+	// Exclusive Feature
+	if(message.guild.id == "635582459366342659"){ 
+		let reply = await AutoReplier.checkReply(message.content.toLowerCase());
+		let dmReply = await AutoReplier.checkDMReply(message.content.toLowerCase());
+		if(dmReply &&! message.content.toLowerCase().includes(prefix)) message.author.send(dmReply).catch(e => {console.log(e);});
+		if(reply &&! message.content.toLowerCase().includes(prefix)) message.channel.send(reply);
+
+		if(message.content.toLowerCase().includes('sus') || message.content.toLowerCase().replace(' ', '').includes('amongus')){
+
+			let susRole = await message.guild.roles.cache.get('860078704038248458');
+			message.member.setNickname('Sussy Boy');
+			message.member.roles.add(susRole);
+
+			setTimeout(async function(){
+				message.member.roles.remove(susRole);
+				message.member.setNickname(message.author.username);
+			}, 2 * 60 * 1000)
+		}
+	}
+
 	if(!LowerCaseMessage.startsWith(prefix)) return;
 
 	args = message.content.replace(`${prefix}`, ``).replace(`${prefix.toUpperCase()}`, ``).split(" ")
