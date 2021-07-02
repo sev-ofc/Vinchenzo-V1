@@ -14,7 +14,7 @@ export async function cmd(message: Message, args: string[]){
 	let i = 1
 	thisQueue.tracks.forEach(async track => {
 		msg = msg.concat(`\n${i}: ${track.title} [${track.duration}]`)
-		if(i = 10) return;
+		if(i == 10) return;
 		i++
 	})
 	return message.reply(msg)
