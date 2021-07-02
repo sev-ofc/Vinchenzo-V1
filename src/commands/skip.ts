@@ -3,9 +3,9 @@ import { Message } from "discord.js";
 import {bot, MusicPlayer} from '../index';
 
 export let commandProps = {
-	'name': 'play',
-	'usage': '[prefix]play',
-	'aliases': ['play', 'playmusic', 'playsong']
+	'name': 'skip',
+	'usage': '[prefix]skip',
+	'aliases': ['skipsong', 'next']
 }
 
 export async function cmd(message: Message, args: string[]){
