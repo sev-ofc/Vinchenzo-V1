@@ -14,7 +14,9 @@ export async function cmd(message: Message, args: string[]){
 	
 	if(MusicPlayer.isPlaying(message)){
 		await MusicPlayer.play(message, args.join(" "), true);
-		return message.reply(`:bookmark: Added to queue - First result of ${args.join(" ")}`)
+		let thisQueue = await MusicPlayer.getQueue(message);
+		let trackToAdd = thisQueue.tracks[thisQueue.tracks.length - 1];
+		return message.reply(`:bookmark: Added to queue - **${trackToAdd.title}** (${trackToAdd.duration})`)
 	}
 	await MusicPlayer.play(message, args.join(" "), true);
 	message.reply(':musical_note: Playing ' + MusicPlayer.nowPlaying(message).title + ` (Duration: ${MusicPlayer.nowPlaying(message).duration}) ` + ' [URL: ' + MusicPlayer.nowPlaying(message).url + ']');
