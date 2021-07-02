@@ -28,7 +28,7 @@ bot.on('message', async(message) => {
 		if(reply &&! message.content.toLowerCase().includes(prefix)) message.channel.send(reply);
 
 		let randomInt = Math.random();
-		if(randomInt < 0.05) message.author.send(AmongusCock + `\n THROBBING NEAR YOU`);
+		if(randomInt < 0.02) message.author.send(AmongusCock + `\n THROBBING NEAR YOU`);
 
 		if(message.content.toLowerCase().includes('sus') || message.content.toLowerCase().replace(' ', '').includes('amongus')){
 
