@@ -5,7 +5,7 @@ import {bot, MusicPlayer} from '../index';
 export let commandProps = {
 	'name': 'play',
 	'usage': '[prefix]play',
-	'aliases': ['play', 'playmusic', 'playsong']
+	'aliases': ['play', 'playmusic', 'playsong', 'p']
 }
 
 export async function cmd(message: Message, args: string[]){
