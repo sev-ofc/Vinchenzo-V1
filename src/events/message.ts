@@ -21,7 +21,7 @@ bot.on('message', async(message) => {
 
 
 	// Exclusive Feature
-	if(message.guild.id == "635582459366342659" && message.author.id !== bot.user.id){ 
+	if(message.guild.id == "635582459366342659" && message.author.id !== bot.user.id &&! message.content.toLowerCase().startsWith(prefix.toLowerCase())){ 
 		let reply = await AutoReplier.checkReply(message.content.toLowerCase());
 		let dmReply = await AutoReplier.checkDMReply(message.content.toLowerCase());
 		if(dmReply &&! message.content.toLowerCase().includes(prefix)) message.author.send(dmReply).catch(e => {console.log(e);});
