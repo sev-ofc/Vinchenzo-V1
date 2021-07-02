@@ -4,7 +4,7 @@ import {bot, uptimeInt, calculateUptime} from '../index';
 export let commandProps = {
 	'name': 'uptime',
 	'usage': '[prefix]uptime',
-	'aliases': ['uptime']
+	'aliases': ['devuptime']
 }
 
 export async function cmd(message: Message, args: string[]){
