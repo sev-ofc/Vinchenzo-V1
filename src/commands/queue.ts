@@ -13,9 +13,11 @@ export async function cmd(message: Message, args: string[]){
 	let msg = `:book: **Bot Queue [First 10 Items]**\nCurrently Playing: ${MusicPlayer.nowPlaying(message).title}`
 	let i = 1
 	thisQueue.tracks.forEach(async track => {
-		msg = msg.concat(`\n${i}: ${track.title} [${track.duration}]`)
+		if(thisQueue.tracks[0] !== track){
+			msg = msg.concat(`\n${i}: ${track.title} [${track.duration}]`);
+			i++
+		}
 		if(i == 10) return;
-		i++
 	})
 	return message.reply(msg)
 
