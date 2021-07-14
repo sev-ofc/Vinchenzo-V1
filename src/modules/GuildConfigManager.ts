@@ -18,7 +18,7 @@ export class GuildConfigManager {
 			randomDMs: false
 		}
 		console.log(`[GUILD CONFIGURER] Starting guild config manager`);
-		
+
 		if(!fs.existsSync(`./data/guilds`)){
 			console.log("[GUILD CONFIGURER] Creating guild directory"); 
 			fs.mkdir(`./data/guilds`, { recursive: true }, (err) => {
@@ -41,6 +41,9 @@ export class GuildConfigManager {
 		let toWrite = JSON.stringify(this.defaultConfiguration, null, 4);
 		if(!fs.existsSync(`${configPath}/config.json`)){
 			console.log(`[GUILD CONFIGURER] Creating guild config file for ${guild.name} [${guild.id}]`)
+			fs.writeFile(`${configPath}/config.json`, toWrite, function (err) {
+				if (err) throw err;
+			  });
 			fs.writeFileSync(`${configPath}/config.json`, toWrite);
 		}
 
