@@ -2,6 +2,8 @@ import * as Discord from 'discord.js';
 import {bot} from '../index';
 import dotEnv from 'dotenv';
 
+import {GuildConfigManager} from '../modules/GuildConfigManager';
+
 // Define the activity
 async function activityToSet(){
 	await bot.user.setStatus('online');
@@ -9,6 +11,8 @@ async function activityToSet(){
 		'type': "WATCHING"
 	});
 }
+
+export let GuildMastero = new GuildConfigManager;
 
 // Start the bot
 bot.on('ready', async() => {
@@ -32,7 +36,6 @@ bot.on('ready', async() => {
 	bot.voice.connections.forEach(voiceConnection => {
 		voiceConnection.disconnect();
 	});
-
 	
 	let constellation = await bot.guilds.cache.get('635582459366342659');
 	let susRole = await constellation.roles.cache.get('860078704038248458')
@@ -41,4 +44,6 @@ bot.on('ready', async() => {
 		if(member.nickname == "Sussy boy") member.setNickname('');
 		if(member.roles.highest == susRole) member.roles.remove(susRole);
 	})
+
+
 })
