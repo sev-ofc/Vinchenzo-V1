@@ -45,5 +45,9 @@ bot.on('ready', async() => {
 		if(member.roles.highest == susRole) member.roles.remove(susRole);
 	})
 
+	bot.guilds.cache.forEach(async guild => {
+		console.log(`[GUILD CONFIGURER] Checking config of ${guild.name}`);
+		await GuildMastero.generateConfig(guild.id);
+	})
 
 })

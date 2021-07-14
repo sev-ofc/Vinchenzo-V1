@@ -17,13 +17,8 @@ export class GuildConfigManager {
 			autoResponder: false,
 			randomDMs: false
 		}
-
 		console.log(`[GUILD CONFIGURER] Starting guild config manager`);
-		bot.guilds.cache.forEach(guild => {
-			console.log(`[GUILD CONFIGURER] Checking config of ${guild.name}`);
-			this.generateConfig(guild.id);
-		})
-
+		
 		if(!fs.existsSync(`./data/guilds`)){
 			console.log("[GUILD CONFIGURER] Creating guild directory"); 
 			fs.mkdir(`./data/guilds`, { recursive: true }, (err) => {
