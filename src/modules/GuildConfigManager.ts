@@ -3,7 +3,7 @@ import {bot} from '../index';
 import fs from 'fs';
 
 export interface GuildConfigFile {
-	sussyUsers: object,
+	sussyusers: object,
 	autoresponder: boolean,
 	randomdms: boolean
 }
@@ -14,7 +14,7 @@ export class GuildConfigManager {
 
 	constructor(){
 		this.defaultConfiguration = {
-			sussyUsers: {},
+			sussyusers: {},
 			autoresponder: false,
 			randomdms: false
 		}
