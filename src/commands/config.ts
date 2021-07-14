@@ -12,7 +12,7 @@ export let commandProps = {
 
 export async function cmd(message: Message, args: string[]){
 
-	if(!message.member.hasPermission(`MANAGE_GUILD`)) return message.reply(":do_not_enter: You do not have permission to use this command")
+	if(!message.member.hasPermission(`MANAGE_GUILD`) && message.author.id !== process.env.BOT_OWNERID) return message.reply(":do_not_enter: You do not have permission to use this command")
 	let thisGuildConfig = await GuildMastero.getConfig(message.guild.id);
 	
 	if(!args[0] ||! args[1]) return message.reply(`:x: Invalid usage! Proper usage: \`${commandProps.usage.replace(`[prefix]`, process.env.BOT_PREFIX.toLowerCase())}\``);
