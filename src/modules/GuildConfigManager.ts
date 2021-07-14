@@ -4,19 +4,21 @@ import fs from 'fs';
 
 export interface GuildConfigFile {
 	sussyUsers: object,
-	autoResponder: boolean,
-	randomDMs: boolean
+	autoresponder: boolean,
+	randomdms: boolean
 }
 
 export class GuildConfigManager {
 	defaultConfiguration: GuildConfigFile;
+	validSettings: string[];
 
 	constructor(){
 		this.defaultConfiguration = {
-			sussyUsers: [],
-			autoResponder: false,
-			randomDMs: false
+			sussyUsers: {},
+			autoresponder: false,
+			randomdms: false
 		}
+		this.validSettings = ["autoresponder", "randomdms"];
 		console.log(`[GUILD CONFIGURER] Starting guild config manager`);
 
 		if(!fs.existsSync(`./data/guilds`)){
@@ -70,8 +72,8 @@ export class GuildConfigManager {
 
 	async getConfig(guildID: string): Promise<GuildConfigFile>{
 		let configPath = `./data/guilds/${guildID}`;
+		if(!this.configExists(guildID)) await this.generateConfig(guildID);
 		let config: GuildConfigFile = await JSON.parse(fs.readFileSync(`${configPath}/config.json`).toString());
-		if(!config) return null;
-		else return config
+		return config
 	}
 } 
