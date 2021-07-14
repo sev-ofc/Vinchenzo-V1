@@ -18,7 +18,9 @@ export class GuildConfigManager {
 			randomDMs: false
 		}
 
+		console.log(`[GUILD CONFIGURER] Starting guild config manager`);
 		bot.guilds.cache.forEach(guild => {
+			console.log(`[GUILD CONFIGURER] Checking config of ${guild.name}`);
 			this.generateConfig(guild.id);
 		})
 
