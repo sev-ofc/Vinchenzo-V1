@@ -16,17 +16,19 @@ export class SusTimer {
         bot.setInterval(this.check, msToRepeat)
     }
 
-    check(){
-        console.log(`[TIMERS] Checking sus timer...`);
+    check() {
+        // console.log(`[TIMERS] Checking sus timer...`);
         let currentTimestamp = Date.now();
         bot.guilds.cache.forEach(async guild => {
             let config = await GuildMastero.getConfig(guild.id);
             for(let prop in config.sussyusers){
+                console.log(`Checking prop ${prop} versus ${currentTimestamp} || Time Passed in MS: ${currentTimestamp - parseInt(prop)} || Duration MS: ${this.roleDurationMS}`)
                 /* Current Timestamp: 5000
                 *  Timestamp Assigned to role: 4000
                 *  5000 - 4000 = 1000 MS passed since
                 */
                 if(currentTimestamp - parseInt(prop) >= this.roleDurationMS){
+                    console.log("Gotta remove that role ig")
                     let memberToRemoveRole = await guild.members.fetch(config.sussyusers[prop])
                     try {
                         let susRole = guild.roles.cache.find(role => role.name.toLowerCase() == "sus");

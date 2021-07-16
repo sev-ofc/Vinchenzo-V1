@@ -24,7 +24,7 @@ bot.on('message', async(message) => {
 
 	let thisConfig = await GuildMastero.getConfig(message.guild.id);
 	
-	if(thisConfig.autoresponder && message.author.id !== bot.user.id &&! message.content.toLowerCase().startsWith(prefix.toLowerCase())){ 
+	if(thisConfig.autoresponder &&! message.author.bot &&! message.content.toLowerCase().startsWith(prefix.toLowerCase())){ 
 		let reply = await AutoReplier.checkReply(message.content.toLowerCase());
 		let dmReply = await AutoReplier.checkDMReply(message.content.toLowerCase());
 		if(dmReply &&! message.content.toLowerCase().includes(prefix)) message.author.send(dmReply).catch(e => {console.log(e);});
@@ -37,10 +37,30 @@ bot.on('message', async(message) => {
 		if(message.content.toLowerCase().includes('sus') || message.content.toLowerCase().replace(' ', '').includes('amongus')){
 			if(message.guild.id !== "635582459366342659") return; 
 			let susRole = message.guild.roles.cache.find(role => role.name.toLowerCase() == "sus");
+			
+			let thisTimeStamp = Date.now();
+			let userIsAlreadySus;
+			for(var prop in thisConfig.sussyusers){
+				if(thisConfig.sussyusers[prop] == message.author.id && message.member.roles.cache.has(susRole.id)){
+					delete thisConfig.sussyusers[prop]
+					thisConfig.sussyusers[thisTimeStamp] = message.member.user.id;
+					GuildMastero.updateConfig(message.guild.id, thisConfig);
+					userIsAlreadySus = true;
+					return;
+				}
+				else if(thisConfig.sussyusers[prop] == message.author.id){
+					delete thisConfig.sussyusers[prop]
+					GuildMastero.updateConfig(message.guild.id, thisConfig);
+					userIsAlreadySus = true
+					return;
+				}
+			}
+
+			if(userIsAlreadySus) return;
+			
 			message.member.setNickname('Sussy Boy');
 			message.member.roles.add(susRole);
 
-			let thisTimeStamp = Date.now();
 			thisConfig.sussyusers[thisTimeStamp] = message.member.user.id;
 			GuildMastero.updateConfig(message.guild.id, thisConfig);
 			/* Deprecated by the new Sus Timer!
