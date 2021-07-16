@@ -37,7 +37,7 @@ bot.on('message', async(message) => {
 		if(message.content.toLowerCase().includes('sus') || message.content.toLowerCase().replace(' ', '').includes('amongus')){
 			if(message.guild.id !== "635582459366342659") return; 
 			let susRole = message.guild.roles.cache.find(role => role.name.toLowerCase() == "sus");
-			
+			if(!susRole) return;
 			let thisTimeStamp = Date.now();
 			let userIsAlreadySus;
 			for(var prop in thisConfig.sussyusers){
