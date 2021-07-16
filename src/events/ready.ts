@@ -14,7 +14,7 @@ async function activityToSet(){
 }
 
 export let GuildMastero = new GuildConfigManager;
-export let GlobalSusTimer = new SusTimer(60000, 600000);
+export let GlobalSusTimer = new SusTimer(10 * 1000, 600000);
 
 // Start the bot
 bot.on('ready', async() => {
