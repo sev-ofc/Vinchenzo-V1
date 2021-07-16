@@ -11,7 +11,7 @@ export class SusTimer {
         this.repeatMS = msToRepeat;
         this.roleDurationMS = roleDuartion;
 
-        console.log(`[TIMERS] Sus timer set to check every ${Math.floor(this.repeatMS / 1000).toString()} minutes! (Role Duration: ${Math.floor(this.roleDurationMS / 1000).toString()} Minutes)`);
+        console.log(`[TIMERS] Sus timer set to check every ${Math.floor(this.repeatMS / 60000).toString()} minutes! (Role Duration: ${Math.floor(this.roleDurationMS / 60000).toString()} Minutes)`);
         this.check();
         bot.setInterval(this.check, msToRepeat)
     }
