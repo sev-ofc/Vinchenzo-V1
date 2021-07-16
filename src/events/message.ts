@@ -58,7 +58,7 @@ bot.on('message', async(message) => {
 
 			if(userIsAlreadySus) return;
 			
-			message.member.setNickname('Sussy Boy');
+			if(message.member.manageable) message.member.setNickname('Sussy Boy');
 			message.member.roles.add(susRole);
 
 			thisConfig.sussyusers[thisTimeStamp] = message.member.user.id;

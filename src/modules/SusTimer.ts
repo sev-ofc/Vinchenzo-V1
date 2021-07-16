@@ -34,7 +34,7 @@ export class SusTimer {
                         let susRole = guild.roles.cache.find(role => role.name.toLowerCase() == "sus");
                         if(!susRole) continue;
                         memberToRemoveRole.roles.remove(susRole)
-                        if(memberToRemoveRole.nickname.toLowerCase().includes("sus")) memberToRemoveRole.setNickname(memberToRemoveRole.user.username);
+                        if(memberToRemoveRole.manageable) memberToRemoveRole.setNickname(memberToRemoveRole.user.username);
                         delete config.sussyusers[prop];
                         GuildMastero.updateConfig(guild.id, config);
                     }
