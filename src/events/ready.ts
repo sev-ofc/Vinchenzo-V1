@@ -39,6 +39,7 @@ bot.on('ready', async() => {
 		voiceConnection.disconnect();
 	});
 	
+	/*
 	let constellation = await bot.guilds.cache.get('635582459366342659');
 	let susRole = await constellation.roles.cache.get('860078704038248458')
 	
@@ -46,6 +47,7 @@ bot.on('ready', async() => {
 		if(member.nickname == "Sussy boy") member.setNickname('');
 		if(member.roles.highest == susRole) member.roles.remove(susRole);
 	})
+	*/
 
 	bot.guilds.cache.forEach(async guild => {
 		console.log(`[GUILD CONFIGURER] Checking config of ${guild.name}`);
