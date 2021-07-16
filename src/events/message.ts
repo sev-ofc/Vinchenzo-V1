@@ -36,14 +36,19 @@ bot.on('message', async(message) => {
 		// Exclusive Feature
 		if(message.content.toLowerCase().includes('sus') || message.content.toLowerCase().replace(' ', '').includes('amongus')){
 			if(message.guild.id !== "635582459366342659") return; 
-			let susRole = await message.guild.roles.cache.get('860078704038248458');
+			let susRole = message.guild.roles.cache.find(role => role.name.toLowerCase() == "sus");
 			message.member.setNickname('Sussy Boy');
 			message.member.roles.add(susRole);
 
+			let thisTimeStamp = Date.now();
+			thisConfig.sussyusers[thisTimeStamp] = message.member.user.id;
+			GuildMastero.updateConfig(message.guild.id, thisConfig);
+			/* Deprecated by the new Sus Timer!
 			setTimeout(async function(){
 				message.member.roles.remove(susRole);
 				message.member.setNickname(message.author.username);
 			}, 2 * 60 * 1000)
+			*/
 		}
 	}
 

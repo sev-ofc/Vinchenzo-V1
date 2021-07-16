@@ -2,6 +2,7 @@ import * as Discord from 'discord.js';
 import {bot} from '../index';
 import dotEnv from 'dotenv';
 
+import {SusTimer} from '../modules/SusTimer';
 import {GuildConfigManager} from '../modules/GuildConfigManager';
 
 // Define the activity
@@ -13,6 +14,7 @@ async function activityToSet(){
 }
 
 export let GuildMastero = new GuildConfigManager;
+export let GlobalSusTimer = new SusTimer(2 * 60 * 1000, 10 * 60 * 1000);
 
 // Start the bot
 bot.on('ready', async() => {
