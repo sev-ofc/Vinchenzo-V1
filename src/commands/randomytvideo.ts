@@ -12,6 +12,11 @@ export let commandProps = {
 export async function cmd(message: Message, args: string[]){
     let apikey = process.env.YOUTUBE_API_KEY;
     youtube.getRandomVid(apikey, function(err , data){
+        if(err){ 
+            message.reply(":x: An error occured!");
+            console.log(err);
+            return;
+        }
         console.log(data);
     })
 }
