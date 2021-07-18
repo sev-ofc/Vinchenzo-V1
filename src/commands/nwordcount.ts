@@ -1,3 +1,4 @@
+// JOKE COMMAND - IT GENERATES A RANDOM NUMBER. NO REAL RACISM INTENDED HERE!
 import { Player } from "discord-player";
 import { Message } from "discord.js";
 import {bot, MusicPlayer} from '../index';
@@ -8,18 +9,20 @@ export let commandProps = {
 	'aliases': ['nwords']
 }
 
+// Blatant code stolen from:
+// https://futurestud.io/tutorials/generate-a-random-number-in-range-with-javascript-node-js
 function between(min, max) {  
     return Math.floor(
       Math.random() * (max - min) + min
     )
   }
 
+// Blatant code stolen from:
 // https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-  // Meme command - not serious. It actually is a random number
 export async function cmd(message: Message, args: string[]){
     if(!args[0]) return message.reply(":x: You must specify who to check the count of!");
     if(message.guild.members.cache.find(member => member.user.username.toLowerCase() == args[0].toLowerCase() || member.user.id == args[0].toLowerCase()) || message.mentions.users.size > 0){
