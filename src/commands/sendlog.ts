@@ -11,6 +11,7 @@ export let commandProps = {
 export async function cmd(message: Message, args: string[]){
 	if(message.author.id == process.env.BOT_OWNERID){
 		console.log(args.join(" "));
+        message.delete();
 	}
 	else null;
 }
