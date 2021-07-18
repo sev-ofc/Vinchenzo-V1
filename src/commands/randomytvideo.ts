@@ -17,7 +17,6 @@ export async function cmd(message: Message, args: string[]){
             console.log(err);
             return;
         }
-        console.log(data.id)
-        message.reply(`:warning: Random YT Vid: ||https://youtube.com/watch?v=${data.id.videoID}||`);
+        message.reply(`:warning: Random YT Vid: ||https://youtube.com/watch?v=${data.id.videoId}||`);
     })
 }
