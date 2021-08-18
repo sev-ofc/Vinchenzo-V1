@@ -40,4 +40,4 @@ export async function calculateUptime(theInt){
 	return Date.now() - theInt;
 }
 
-bot.login(process.env.BOT_TOKEN)
+bot.login(process.env.BOT_TOKEN);

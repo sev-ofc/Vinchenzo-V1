@@ -21,7 +21,7 @@ export default class CommandHandler {
 		console.log(`[COMMANDS] Loading ${files.length} Commands...`)
 		files.forEach(async f => {
 			let formattedEvent:string = f.replace(fileRegexTS, '').replace(fileRegexJS, '');
-			if(f.includes(`CommandLoader`)) return; // Dont load the event loaded lmao
+			if(f.includes(`CommandLoader`)) return; // Dont load the commandloader lmao
 			let cmdObj = require(`${f}`);
 			console.log(`[COMMANDS] ${i + 1}: ${cmdObj.commandProps.name} loaded!`);
 			CMDManager.registerCommand(cmdObj.commandProps.name, cmdObj.commandProps.aliases, f);

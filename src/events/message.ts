@@ -33,6 +33,8 @@ bot.on('message', async(message) => {
 		let randomInt = Math.random();
 		if(randomInt < 0.02 && thisConfig.randomdms) message.author.send(AmongusCock + `\n THROBBING NEAR YOU`);
 
+		if(((message.attachments.size > 0 && message.attachments.first().name.toLowerCase().includes('gif')) || message.content.toLowerCase().includes('.gif')) && thisConfig.autoresponder) message.channel.send('fard');
+		if(message.content.toLowerCase().includes('tenor') && thisConfig.autoresponder) message.channel.send('fard');
 		// Exclusive Feature
 		if(message.content.toLowerCase().includes('sus') || message.content.toLowerCase().replace(' ', '').includes('amongus')){
 			if(message.guild.id !== "635582459366342659") return; 
