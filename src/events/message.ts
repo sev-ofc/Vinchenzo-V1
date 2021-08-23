@@ -31,13 +31,15 @@ bot.on('message', async(message) => {
 		if(reply &&! message.content.toLowerCase().includes(prefix)) message.channel.send(reply);
 
 		let randomInt = Math.random();
+		
+		let randomInt2 = Math.random();
 		if(randomInt < 0.02 && thisConfig.randomdms) message.author.send(AmongusCock + `\n THROBBING NEAR YOU`);
 
 		async function fard(){
 			let amongASSEmote: Discord.Emoji = await bot.emojis.cache.get('878505518258348033');
 			if(!amongASSEmote) return;
 
-			if(randomInt < 0.1 && thisConfig.randomdms) message.react(amongASSEmote.id);
+			if(randomInt2 < 0.1 && thisConfig.randomdms) message.react(amongASSEmote.id);
 		};
 
 		if(((message.attachments.size > 0 && message.attachments.first().name.toLowerCase().includes('gif')) || message.content.toLowerCase().includes('.gif')) && thisConfig.autoresponder) fard();
